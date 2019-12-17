@@ -28,7 +28,7 @@ function actOnUserInput() {
             }
         // failure case
         } else {
-            dm = "That's not a valid room.";
+            dm = "That's not a valid room";
         }
 
     } else if (commandList[0] == "take") {
@@ -62,7 +62,11 @@ function actOnUserInput() {
         }
 
     } else if (commandList[0] == "open") {
-
+        if (gameObject.openableObjects.includes(commandList[1])) {
+            dm = "You can open that object";
+        } else {
+            dm = "You can't open the " + commandList[1];
+        }
 
     } else if (commandList[0] == "inventory") {
         // print out the inventory
@@ -135,15 +139,15 @@ function removeFromArray(arr, it) {
 // the text content of the game stored within an object for reference
 var gameObject = {
     "descriptions": {
-        "bedroom": "The bedroom has a bed in it",
-        "den": "The den has a fireplace",
-        "storage": "The storage room has a fuck ton of boxes in it",
-        "library": "The library has lots of books in it",
-        "courtyard": "In the middle of the couryard is a large fountain. You can see a lockbox sitting on the edge of the fountain. Around the edge of the courtyard are a number of benches, chairs, and side-tables. The sky is open, and thousands of stars dot the sky",
-        "garage": "In the garage is a pair of bycicles",
-        "game": "There is a table in the middle of the room and shelves with games around",
-        "kitchen": "In the kitchen there is food",
-        "foyer": "In the foyer there is a door to the outside world"
+        "bedroom": "The bedroom has a bed in the center. On the wall is a painting of a woman singing. The bed has a red comforter laid across it. To the east is the den and to the south is the library",
+        "den": "The den has a fireplace on the north wall. In the center of the room is a comfy looking couch. A knife and a block of cheese sits on a silver plate on the couch. To the east is the box filled storage room, to the south is the courtyard and fountain, and to the west is the bedroom",
+        "storage": "The storage room has a large number of boxes in it. The boxes are labeled 'spoons,' 'knives,' and 'forks.' To the south is the garage and to the west is the den",
+        "library": "The library has lots of books in it. In the center of the room is an oak desk. On the desk sits a book, a notepad, and a pen. To the north is a doorway to a bedroom, to the east is a courtyard with a fountain, and to the south is a game room",
+        "courtyard": "In the middle of the couryard is a large fountain. You can see a lockbox sitting on the edge of the fountain. Around the edge of the courtyard are a number of benches, chairs, and side-tables. The sky is open, and thousands of stars dot the sky. To the north is a doorway that opens to a den. To the east is what looks to be a garage. To the south is a kitchen, and to the west is a library",
+        "garage": "In the garage is a pair of bycicles. Hanging from the back of one bike is a license plate. Between the handlebars of the other bike is a piece of paper. The room is dim, and there is no sign of anything else in the light. TO the north is the storage room, to the south is the foyer, and to the west is the courtyard",
+        "game": "There is a table in the middle of the room and shelves with games along the walls. On the table is a chess board",
+        "kitchen": "On the kitchen counter are three scales. Each scale is labeled with a sticky note that has a drawing of either a fork, a knife, or a spoon",
+        "foyer": "In the foyer there is a door to the outside world. Along one wall is a pair of boots and a coat on a coat hanger. A welcome mat sits in front of the door"
     },
 
     "verbs": {
@@ -192,5 +196,7 @@ var gameObject = {
 
     "solutionText": {
         "lockbox": "You open up the lockbox. You can now take the key"
-    }
+    },
+
+    "openableObjects": []
 }
