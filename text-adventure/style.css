@@ -1,0 +1,32 @@
+#response {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+#input-bar {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#input {
+    flex: 1;
+    font-size: 25px;
+    font-family: Arial;
+    text-align: center;
+}
+
+#button {
+    font-size: 16px;
+    padding: 15px 30px;
+}
+
+p {
+    font-family: Arial;
+    text-align: center;
+    font-size: 25px;
+}
