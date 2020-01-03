@@ -19,12 +19,18 @@ function actOnUserInput() {
 
     if (commandList[0] == "go") {
         // go to the room
-        // TODO: check out whether the room is adjacent to where you are
         if (house.includes(commandList[1])) {
-            position = commandList[1];
-            dm = "You go to the " + commandList[1];
-            if (commandList[1] == "game") {
-                dm += " room"
+            console.log(gameObject.traversals[position]);
+            if (gameObject.traversals[position].includes(commandList[1])) {
+                dm = "You go to the " + commandList[1];
+                position = commandList[1];
+
+                // formatting for the game room
+                if (commandList[1] == "game") {
+                    dm += " room";
+                }
+            } else {
+                dm = "You are unable to get to the " + commandList[1] + " from the " + position;
             }
         // failure case
         } else {
@@ -198,5 +204,17 @@ var gameObject = {
         "lockbox": "You open up the lockbox. You can now take the key"
     },
 
-    "openableObjects": []
+    "openableObjects": [],
+
+    "traversals": {
+        "bedroom": ["den", "library"],
+        "den": ["bedroom", "storage", "courtyard"],
+        "storage": ["den", "garage"],
+        "library": ["bedroom", "courtyard", "game"],
+        "courtyard": ["den", "garage", "kitchen", "library"],
+        "garage": ["storage", "foyer", "courtyard"],
+        "game": ["library", "kitchen"],
+        "kitchen": ["courtyard", "foyer", "game"],
+        "foyer": ["garage", "kitchen"]
+    }
 }
